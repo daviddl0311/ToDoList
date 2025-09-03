@@ -11,6 +11,7 @@ const myCompleted = document.querySelector("#completed");
 
 myWait.style.display = "none";
 myCompleted.style.display = "none";
+messageFilter.style.display = "none";
 
 // EL localStorage se convierte en un obj (clave y valor), 
 // Si no hay nada se convierte en un arr vacio
@@ -68,7 +69,7 @@ function filterText () {
     textFilter.textContent = `${myWait.childElementCount == 0 ? "¡Todas las tareas completadas! 🎉" : `${myWait.childElementCount} tareas pendientes`}`
 }
 function showInfo() {
-    info.textContent = `Total: ${arr.length} - Pendientes: ${myWait.childElementCount} - Completas: ${myCompleted.childElementCount}`;
+    info.textContent = `Total: ${arr.length <= 1 ? "1 tarea" : `${arr.length} tareas`} • Completas: ${myCompleted.childElementCount} • Pendientes: ${myWait.childElementCount}`;
 }
 function showMessage() {
     messageFilter.style.display = "none";
@@ -177,8 +178,7 @@ function renderizarPendiente() {
         }
     })
 
-    messageFilter.style.display = `${myWait.childElementCount == 0 ? "flex" : "none"}`;
-
+    // messageFilter.style.display = `${myWait.childElementCount == 0 ? "flex" : "none"}`;
 }
 
 renderizarPendiente();
@@ -224,7 +224,7 @@ function renderizarCompleto() {
         }
     })
 
-    messageFilter.style.display = `${myCompleted.childElementCount == 0 ? "flex" : "none"}`;
+    // messageFilter.style.display = `${myCompleted.childElementCount == 0 ? "flex" : "none"}`;
 }
 
 renderizarCompleto();
@@ -242,6 +242,7 @@ btn.addEventListener("click",() => {
 
     renderizar();
     renderizarPendiente();
+    renderizarCompleto();
 
     updateButton();
     clear();
