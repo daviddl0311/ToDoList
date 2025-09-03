@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To - Do - List</title>
+    <link rel="perload" href="js/app.js" as="script">
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/8bc6f858e7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <main class="flex flex-column gap2 center">
+        <section class="center">
+            <article class="container flex flex-column gap2">
+                <div class="flex flex-column gap2 control">
+                    <div class="flex flex-column gap3">
+                        <div class="flex gap3 center">
+                            <i class="fa-solid fa-check-double title center"></i>
+                            <h2 class="title center-align">To - Do - List</h2>
+                        </div>
+                        <p class="center-align">Organiza tus tareas de manera simple y eficiente</p>
+                    </div>
+            
+                    <div class="grid grid-column3 gap">
+                        <input type="text" name="work" id="work" placeholder="Añadir nueva tarea...">
+                        <button class="center2" id="btn-enter">
+                            <div class="flex gap">
+                                <i class="fa-solid fa-plus icon-plus center"></i>
+                                <p class="center btn-text">
+                                    Añadir
+                                </p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div class="filter grid grid-column gap">
+                    <div class="grid grid-column2 gap">
+                        <button class="btn lista active center" id="all"></button>
+                        <button class="btn wait" id="pen"></button>
+                        <button class="btn completed" id="com"></button>
+                    </div>
+                    <div class="text-right">
+                        <p id="text-filter"></p>
+                    </div>
+                </div>
+                <div class="flex flex-column gap" id="lista">
+                </div>
+                <div class="flex flex-column gap" id="wait">
+                </div>
+                <div class="flex flex-column gap" id="completed">
+                </div>
+                <div class="message center flex flex-column  gap3">
+                    <i class="fa-regular fa-calendar-check center-align"></i>
+                    <p class="center-align text1">No hay tareas aún</p>
+                    <p class="center-align text2">¡Comienza añadiendo tu primera tarea!</p>
+                </div>
+                <div class="message center flex flex-column gap3" id="message-filter">
+                    <i class="fa-regular fa-calendar-check center-align"></i>
+                    <p class="center-align text1">No hay tareas en esta categoría</p>
+                    <p class="center-align text2">Prueba cambiando el filtro para ver otras tareas</p>
+                </div>
+                <div class="center info">
+                    <p id="info-task"></p>
+                </div>
+            </article>
+        </section>
+    </main>
+    <script src="js/app.js"></script>
+</body>
+</html>
