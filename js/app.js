@@ -30,6 +30,7 @@ btnFilter.forEach(ele => {
             myList.style.display = "flex";
             myWait.style.display = "none";
             myCompleted.style.display = "none";
+
         } else if(ele.classList.contains("wait")) {
             myList.style.display = "none";
             myWait.style.display = "flex";
@@ -44,14 +45,17 @@ btnFilter.forEach(ele => {
 
 document.querySelector("#all").addEventListener("click", () => {
     renderizar();
+    messageFilter.style.display = `${(myWait.childElementCount > 0) && (myCompleted.childElementCount == 0) ? "none" : "none"}`;
 })
 
 document.querySelector("#pen").addEventListener("click", () => {
     renderizarPendiente();
+    messageFilter.style.display = `${(myWait.childElementCount == 0) && (myCompleted.childElementCount > 0) ? "flex" : "none"}`;
 })
 
 document.querySelector("#com").addEventListener("click", () => {
     renderizarCompleto();
+    messageFilter.style.display = `${(myWait.childElementCount > 0) && (myCompleted.childElementCount == 0) ? "flex" : "none"}`;
 })
 
 // Actualizar Estado Button
@@ -70,9 +74,6 @@ function filterText () {
 }
 function showInfo() {
     info.textContent = `Total: ${arr.length <= 1 ? "1 tarea" : `${arr.length} tareas`} • Completas: ${myCompleted.childElementCount} • Pendientes: ${myWait.childElementCount}`;
-}
-function showMessage() {
-    messageFilter.style.display = "none";
 }
 
 function clear() {
@@ -131,8 +132,6 @@ function renderizar() {
 
         myList.appendChild(myDiv);
     })
-
-    showMessage();
 }
 
 renderizar();
@@ -177,8 +176,6 @@ function renderizarPendiente() {
             myWait.appendChild(myDiv);
         }
     })
-
-    // messageFilter.style.display = `${myWait.childElementCount == 0 ? "flex" : "none"}`;
 }
 
 renderizarPendiente();
@@ -223,8 +220,6 @@ function renderizarCompleto() {
             myCompleted.appendChild(myDiv);
         }
     })
-
-    // messageFilter.style.display = `${myCompleted.childElementCount == 0 ? "flex" : "none"}`;
 }
 
 renderizarCompleto();
@@ -351,6 +346,7 @@ myWait.addEventListener("click", (e) => {
     guardar();
     updateButton();
     clear();
+    messageFilter.style.display = `${(myWait.childElementCount == 0) && (myCompleted.childElementCount > 0) ? "flex" : "none"}`;
 })
 
 myCompleted.addEventListener("click", (e) => {
@@ -396,6 +392,7 @@ myCompleted.addEventListener("click", (e) => {
     guardar();
     updateButton();
     clear();
+    messageFilter.style.display = `${(myWait.childElementCount > 0) && (myCompleted.childElementCount == 0) ? "flex" : "none"}`;
 })
 
 // Input Event
